@@ -14,12 +14,26 @@ public class InterfaceServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter saida = resp.getWriter();
         ConsultaDAO banco = new ConsultaDAO();
-        saida.println("<!DOCTYPE html><html><head><title>Consulta Cidades</title><style>html * {   font-size: 1.25em !important;   font-family: 'Courier New', sans-serif;}</style></head><body><table border=1px>");
+        saida.println("<!DOCTYPE html>" +
+                "<html>" +
+                    "<head>" +
+                        "<title>Consulta Bancos</title>" +
+                        "<style>" +
+                            "html * {" +
+                            "   font-size: 1.25em !important;" +
+                            "   font-family: 'Courier New', sans-serif;" +
+                            "}" +
+                        "</style>" +
+                    "</head>" +
+                "<body>" +
+                "      <table border=1px>");
 
         for(Schemata s : banco.listaBancos()) {
-            saida.println("<tr><td> <button>" + s.getSchema_name() + "</button></td></tr>");
+            saida.println("     <tr><td> <button>" + s.getSchema_name() + "</button></td></tr>");
         }
 
-        saida.println("</table></body></html>");
+        saida.println("</table>" +
+                 "</body>" +
+            "</html>");
     }
 }
